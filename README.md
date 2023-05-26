@@ -1,0 +1,1 @@
+wget -O- https://raw.githubusercontent.com/iwex/scripts/main/swap.sh | bash -s
