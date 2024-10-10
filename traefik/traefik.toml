@@ -1,0 +1,24 @@
+[global]
+checkNewVersion = true
+sendAnonymousUsage = false
+
+[entryPoints]
+[entryPoints.web]
+address = ":80"
+
+[accessLog]
+filePath = "/root/traefik/log/access.log"
+format = "common"
+
+[log]
+filePath = "/root/traefik/log/traefik.log"
+format = "json"
+
+[api]
+insecure = true
+dashboard = true
+
+[ping]
+
+[providers.docker]
+exposedByDefault = false
