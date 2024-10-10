@@ -6,4 +6,6 @@ Type=notify
 ExecStart=/root/traefik/traefik --configFile=/root/traefik/traefik.toml
 Restart=always
 WatchdogSec=1s
+
+[Install]
 WantedBy=multi-user.target
