@@ -7,11 +7,11 @@ sendAnonymousUsage = false
 address = ":80"
 
 [accessLog]
-filePath = "/root/traefik/log/access.log"
+filePath = "/root/traefik/logs/access.log"
 format = "common"
 
 [log]
-filePath = "/root/traefik/log/traefik.log"
+filePath = "/root/traefik/logs/traefik.log"
 format = "json"
 
 [api]
