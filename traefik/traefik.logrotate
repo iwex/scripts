@@ -1,0 +1,15 @@
+/var/log/traefik/*.log {
+    su traefik traefik
+    daily
+    rotate 14
+    missingok
+    notifempty
+    compress
+    delaycompress
+    create 0640 traefik traefik
+    sharedscripts
+    postrotate
+        # Traefik reopens its log files on SIGUSR1
+        systemctl kill -s USR1 traefik.service >/dev/null 2>&1 || true
+    endscript
+}
