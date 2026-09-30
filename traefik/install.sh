@@ -146,3 +146,4 @@ systemctl restart traefik || die "traefik failed to start; check: journalctl -u 
 
 info "Traefik $VERSION is running"
 info "Dashboard: http://<server>:8080/dashboard/ (no auth: restrict port 8080 with a firewall)"
+info "HTTPS: optional, see the websecure block in $CONF"
