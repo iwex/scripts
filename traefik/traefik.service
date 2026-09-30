@@ -8,6 +8,8 @@ Wants=network-online.target
 Type=notify
 User=traefik
 Group=traefik
+# secrets such as the Cloudflare API token, written by install.sh (optional)
+EnvironmentFile=-/etc/traefik/traefik.env
 ExecStart=/usr/local/bin/traefik --configFile=/etc/traefik/traefik.toml
 Restart=always
 RestartSec=5
