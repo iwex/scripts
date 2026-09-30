@@ -6,6 +6,24 @@ sendAnonymousUsage = false
   [entryPoints.web]
   address = ":80"
 
+  # --- HTTPS (optional) ------------------------------------------------------
+  # Uncomment this entry point and [certificatesResolvers] below, set the ACME
+  # email, then: systemctl restart traefik. Ports 80 and 443 must be reachable
+  # from the internet. Routers then only need to opt in to the entry point,
+  # e.g. docker label:  traefik.http.routers.<name>.entrypoints=websecure
+  #
+  # [entryPoints.websecure]
+  # address = ":443"
+  #   # every router on websecure gets a certificate from this resolver
+  #   [entryPoints.websecure.http.tls]
+  #   certResolver = "letsencrypt"
+  #
+  # Optionally redirect all plain HTTP to HTTPS:
+  #   [entryPoints.web.http.redirections.entryPoint]
+  #   to = "websecure"
+  #   scheme = "https"
+  #   permanent = true
+
   # API and dashboard, no auth: restrict port 8080 with a firewall
   [entryPoints.traefik]
   address = ":8080"
@@ -30,3 +48,13 @@ exposedByDefault = false
 [providers.file]
 directory = "/etc/traefik/dynamic"
 watch = true
+
+# --- Let's Encrypt (optional, see websecure above) ----------------------------
+# acme.json is created by traefik on first start (permissions 600).
+#
+# [certificatesResolvers.letsencrypt.acme]
+# email = "you@example.com"
+# storage = "/var/lib/traefik/acme.json"
+# # test against the staging CA first to avoid rate limits; remove for real certs
+# # caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
+#   [certificatesResolvers.letsencrypt.acme.tlsChallenge]
